@@ -1,0 +1,22 @@
+{
+  "name": "auth-app",
+  "version": "1.0.0",
+  "description": "authentication app using JWT",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon"
+  },
+  "author": "anthony munene",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0"
+  }
+}
