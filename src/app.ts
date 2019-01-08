@@ -11,7 +11,6 @@ class App {
 
     constructor(controllers, port: any) {
 
-        console.log(process.env)
         this.app = express()
         this.port = port
         this.connectToDataBase()
@@ -33,9 +32,13 @@ class App {
     }
 
     private connectToDataBase() {
-        const { MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env
-        console.log(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`)
-        mongoose.connect(`mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`);
+        const { MONGO_DB_NAME, DB_PORT, MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env
+        console.log(`database://database/:${MONGO_DB_NAME}`)
+        const mongodbConfig = {
+            user: MONGO_USER,
+            pass: MONGO_PASSWORD
+        }
+        mongoose.connect(`mongodb://${MONGO_PATH}`);
     }
 
     public listen() {
