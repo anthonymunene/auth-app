@@ -1,6 +1,7 @@
 import * as express from "express";
-import Post from "./post.interface";
-class PostController {
+import Post from "./posts.interface";
+import postModel from "./posts.model"
+class PostsController {
   public path = "/posts";
   public router = express.Router();
 
@@ -22,13 +23,20 @@ class PostController {
   }
 
   getAllPosts = (req: express.Request, res: express.Response) => {
+    postModel.find()
+        .then(posts => {
+          res.send(posts)
+        })
     res.send(this.posts)
   }
   createPost = (req: express.Request, res: express.Response) => {
-    const post: Post = req.body
-    this.posts.push(post)
-    res.send(post)
+    const postData: Post = req.body
+    const createdPost = new postModel(postData)
+      createdPost.save()
+          .then(savedPost => {
+            res.send(savedPost)
+          })
   }
 }
 
-export default PostController;
+export default PostsController;
