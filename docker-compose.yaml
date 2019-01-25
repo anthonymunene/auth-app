@@ -1,0 +1,19 @@
+version: "3"
+services:
+  database:
+    image: mongo:4.0
+    env_file:
+      - .env
+    restart: always
+    container_name: "authapp_db"
+    ports:
+      - 27017:27017
+    command: "mongod --smallfiles --logpath=${MONGO_LOG_FILE}"
+  mongo_seed:
+    image: mongo:4.0
+    links:
+      - database
+    volumes:
+      - ./seed:/seed
+    command:
+      /seed/import.sh
