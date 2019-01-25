@@ -2,7 +2,8 @@ import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import * as mongoose from 'mongoose'
 import loggerMiddleware  from './middleware/logger'
-import errorHandler from './middleware/errorHandler'
+import errorMiddleware from './middleware/error'
+import errorMiddleWare from './middleware/error';
 
 
 class App {
@@ -21,7 +22,7 @@ class App {
     private initializeMiddleWares() {
         this.app.use(bodyParser.json())
         this.app.use(loggerMiddleware)
-        this.app.use(errorHandler)
+        this.app.use(errorMiddleWare)
     }
 
     private initializeControllers(controllers) {
