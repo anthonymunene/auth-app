@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import App from './app'
-import PostsController from './posts/posts.controller'
+import PostsController from './post/post.controller'
 import loggerMiddleware  from './middleware/logger'
 import errorHandler from './middleware/error'
 
